@@ -56,13 +56,13 @@
 
 <div>
   <form *ngIf=editFilm name="editForm">
-    <input type="text" placeholder="Title" name="title" [(ngModel)]="editFilm.$title" /><br>
-    <input type="text" placeholder="Description" name="description" [(ngModel)]="editFilm.$description" /><br>
-    <input type="number" placeholder="Release Year" name="releaseYear" [(ngModel)]="editFilm.$releaseYear" /><br>
-    <input type="number" placeholder="Rental Rate" name="rentalRate" [(ngModel)]="editFilm.$rentalRate" /><br>
-    <input type="number" placeholder="Length" name="length" [(ngModel)]="editFilm.$length" /><br>
-    <input type="text" placeholder="Rating" name="rating" [(ngModel)]="editFilm.$rating" /><br>
-    <input type="text" placeholder="Language Id" name="languageId" [(ngModel)]="editFilm.$languageId" /><br>
+    <input type="text" placeholder="Title" name="title" [(ngModel)]="editFilm.title" /><br>
+    <input type="text" placeholder="Description" name="description" [(ngModel)]="editFilm.description" /><br>
+    <input type="number" placeholder="Release Year" name="releaseYear" [(ngModel)]="editFilm.releaseYear" /><br>
+    <input type="number" placeholder="Rental Rate" name="rentalRate" [(ngModel)]="editFilm.rentalRate" /><br>
+    <input type="number" placeholder="Length" name="length" [(ngModel)]="editFilm.length" /><br>
+    <input type="text" placeholder="Rating" name="rating" [(ngModel)]="editFilm.rating" /><br>
+    <input type="text" placeholder="Language Id" name="languageId" [(ngModel)]="editFilm.languageId" /><br>
    <button class="btn btn-primary" (click)='updateFilm(editFilm)'>Save</button>
    <button class="btn btn-primary" (click)="setCancelFilm()">Cancel</button>
    <button class="btn btn-primary" (click)="setBoolAddActorsToFilm()">Add Actors</button>
