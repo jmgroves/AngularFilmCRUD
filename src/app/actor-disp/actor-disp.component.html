@@ -1,0 +1,90 @@
+<h1>
+
+  {{title}}</h1>
+
+<div>
+<table class="table table-sm table-hover table-bordered table-striped" *ngIf="!selected">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let actor of actors">
+
+      <td>{{actor.id}}</td>
+      <td>{{actor.fname}} {{actor.lname}}</td>
+      <td>
+        <button class="btn btn-primary" (click)='displayActor(actor)'>Details</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" (click)='addSelect()'>Add New Actor</button>
+
+
+</div>
+
+<div *ngIf= selected&&!editActor>
+  Id: {{selected.id}}
+  <br>
+  <br>Name: {{selected.fname}} {{selected.lname}}
+  <br>
+  <br>Films: {{selected.films}}
+  <br>
+
+  <button class="btn btn-primary" (click)="setCancelActor()">Back</button>
+  <button class="btn btn-primary" (click)="setEditActor()">Edit</button>
+</div>
+
+<div>
+  <form *ngIf=editActor name="editForm">
+    <input type="text" placeholder="First Name" name="fname" [(ngModel)]="editActor.fname" /><br>
+    <input type="text" placeholder="Last Name" name="lname" [(ngModel)]="editActor.lname" /><br>
+    <button class="btn btn-primary" (click)='dispAddFilmsToActor()'>Add Films to Actor</button>
+   <button class="btn btn-primary" (click)='updateActor(editActor)'>Save</button>
+   <button class="btn btn-primary" (click)="setCancelActor()">Cancel</button>
+
+  </form>
+</div>
+
+<div *ngIf=boolAddFilmsToActor>
+  <table class="table table-sm table-hover table-bordered table-striped" *ngIf="!selected">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Add Film To Actor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let film of film.films">
+
+        <td>{{film.$id}}</td>
+        <td>{{film.$title}}</td>
+        <td>{{film.$description}}</td>
+        <td>
+          <button class="btn btn-primary" (click)='addFilmsToActor(editActor, film)'>Add Film</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" (click)='setCancelActor()'>Done</button>
+
+</div>
+<div>
+  <form *ngIf=boolAdd name="addForm">
+    <input type="text" placeholder="First Name" name="fname" [(ngModel)]="addedActor.fname" /><br>
+    <input type="text" placeholder="Last Name" name="description" [(ngModel)]="addedActor.lname" /><br>
+
+    <button class="btn btn-primary" (click)="addActor(addedActor)">Save</button>
+   <button class="btn btn-primary" (click)='setCancelActor()'>Cancel</button>
+
+  </form>
+</div>
+

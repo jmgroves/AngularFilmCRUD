@@ -1,0 +1,112 @@
+<h1>
+
+  {{title}}</h1>
+
+<div>
+<table class="table table-sm table-hover table-bordered table-striped" *ngIf="!selected">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">View Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let film of films">
+
+      <td>{{film.$id}}</td>
+      <td>{{film.$title}}</td>
+      <td>{{film.$description}}</td>
+      <td>
+        <button class="btn btn-primary" (click)='displayFilm(film)'>Details</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" (click)='addSelect()'>Add New Film</button>
+
+
+</div>
+
+<div *ngIf= selected&&!editFilm>
+  Id: {{selected.id}}
+  <br>
+  <br>Title: {{selected.title}}
+  <br>
+  <br>Description: {{selected.description}}
+  <br>
+  <br>Release Year: {{selected.releaseYear}}<br>
+  <br>
+  <br>Rental Rate: {{selected.rentalRate}}
+  <br>
+  <br>Length: {{selected.length}}
+  <br>
+  <br>Rating: {{selected.rating}}<br>
+  <br>
+  <br>Language Id: {{selected.languageId}}
+  <br>
+  <br>Actors: {{selected.actors}}
+  <br>
+
+  <button class="btn btn-primary" (click)="setCancelFilm()">Back</button>
+  <button class="btn btn-primary" (click)="setEditFilm()">Edit</button>
+</div>
+
+<div>
+  <form *ngIf=editFilm name="editForm">
+    <input type="text" placeholder="Title" name="title" [(ngModel)]="editFilm.$title" /><br>
+    <input type="text" placeholder="Description" name="description" [(ngModel)]="editFilm.$description" /><br>
+    <input type="number" placeholder="Release Year" name="releaseYear" [(ngModel)]="editFilm.$releaseYear" /><br>
+    <input type="number" placeholder="Rental Rate" name="rentalRate" [(ngModel)]="editFilm.$rentalRate" /><br>
+    <input type="number" placeholder="Length" name="length" [(ngModel)]="editFilm.$length" /><br>
+    <input type="text" placeholder="Rating" name="rating" [(ngModel)]="editFilm.$rating" /><br>
+    <input type="text" placeholder="Language Id" name="languageId" [(ngModel)]="editFilm.$languageId" /><br>
+   <button class="btn btn-primary" (click)='updateFilm(editFilm)'>Save</button>
+   <button class="btn btn-primary" (click)="setCancelFilm()">Cancel</button>
+   <button class="btn btn-primary" (click)="setBoolAddActorsToFilm()">Add Actors</button>
+
+  </form>
+</div>
+
+<div *ngIf boolAddActorsToFilm>
+  <table class="table table-sm table-hover table-bordered table-striped" *ngIf="!selected">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actor of actor.actors">
+
+        <td>{{actor.id}}</td>
+        <td>{{actor.fname}} {{actor.lname}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="addActorToFilm(editFilm,actor)">Add</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)='setCancelFilm()'>Done</button>
+
+</div>
+
+
+<div>
+  <form *ngIf=boolAdd name="addForm">
+    <input type="text" placeholder="Title" name="title" [(ngModel)]="addedFilm.$title" /><br>
+    <input type="text" placeholder="Description" name="description" [(ngModel)]="addedFilm.$description" /><br>
+    <input type="number" placeholder="Release Year" name="releaseYear" [(ngModel)]="addedFilm.$releaseYear" /><br>
+    <input type="number" placeholder="Rental Rate" name="rentalRate" [(ngModel)]="addedFilm.$rentalRate" /><br>
+    <input type="number" placeholder="Length" name="length" [(ngModel)]="addedFilm.$length" /><br>
+    <input type="text" placeholder="Rating" name="rating" [(ngModel)]="addedFilm.$rating" /><br>
+    <input type="text" placeholder="Language Id" name="languageId" [(ngModel)]="addedFilm.$languageId" /><br>
+    <button class="btn btn-primary" (click)="addFilm(addedFilm)">Save</button>
+   <button class="btn btn-primary" (click)='setCancelFilm()'>Cancel</button>
+
+  </form>
+</div>
+
