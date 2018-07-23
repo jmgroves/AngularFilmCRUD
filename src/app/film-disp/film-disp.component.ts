@@ -32,7 +32,7 @@ boolAddActorsToFilm = false;
   }
 
   generateId() {
-    return this.films[this.films.length - 1].$id + 1;
+    return this.films[this.films.length - 1].id + 1;
   }
 
   displayFilm(film) {
@@ -48,14 +48,14 @@ boolAddActorsToFilm = false;
   }
 
   addFilm() {
-  this.addedFilm.$id = this.generateId();
+  this.addedFilm.id = this.generateId();
   this.films.push(this.addedFilm);
   this.addedFilm = new Film();
   this.boolAdd = false;
   }
 
  updateFilm(film) {
-   this.films[film.$id - 1] = film;
+   this.films[film.id - 1] = film;
    this.setCancelFilm();
 
   }

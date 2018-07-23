@@ -15,9 +15,9 @@
   <tbody>
     <tr *ngFor="let film of films">
 
-      <td>{{film.$id}}</td>
-      <td>{{film.$title}}</td>
-      <td>{{film.$description}}</td>
+      <td>{{film.id}}</td>
+      <td>{{film.title}}</td>
+      <td>{{film.description}}</td>
       <td>
         <button class="btn btn-primary" (click)='displayFilm(film)'>Details</button>
       </td>
@@ -97,13 +97,13 @@
 
 <div>
   <form *ngIf=boolAdd name="addForm">
-    <input type="text" placeholder="Title" name="title" [(ngModel)]="addedFilm.$title" /><br>
-    <input type="text" placeholder="Description" name="description" [(ngModel)]="addedFilm.$description" /><br>
-    <input type="number" placeholder="Release Year" name="releaseYear" [(ngModel)]="addedFilm.$releaseYear" /><br>
-    <input type="number" placeholder="Rental Rate" name="rentalRate" [(ngModel)]="addedFilm.$rentalRate" /><br>
-    <input type="number" placeholder="Length" name="length" [(ngModel)]="addedFilm.$length" /><br>
-    <input type="text" placeholder="Rating" name="rating" [(ngModel)]="addedFilm.$rating" /><br>
-    <input type="text" placeholder="Language Id" name="languageId" [(ngModel)]="addedFilm.$languageId" /><br>
+    <input type="text" placeholder="Title" name="title" [(ngModel)]="addedFilm.title" /><br>
+    <input type="text" placeholder="Description" name="description" [(ngModel)]="addedFilm.description" /><br>
+    <input type="number" placeholder="Release Year" name="releaseYear" [(ngModel)]="addedFilm.releaseYear" /><br>
+    <input type="number" placeholder="Rental Rate" name="rentalRate" [(ngModel)]="addedFilm.rentalRate" /><br>
+    <input type="number" placeholder="Length" name="length" [(ngModel)]="addedFilm.length" /><br>
+    <input type="text" placeholder="Rating" name="rating" [(ngModel)]="addedFilm.rating" /><br>
+    <input type="text" placeholder="Language Id" name="languageId" [(ngModel)]="addedFilm.languageId" /><br>
     <button class="btn btn-primary" (click)="addFilm(addedFilm)">Save</button>
    <button class="btn btn-primary" (click)='setCancelFilm()'>Cancel</button>
 
